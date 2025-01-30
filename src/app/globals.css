@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+      font-family: 'ImperialScript';        
+      src: url('/fonts/ImperialScript.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,8 +24,16 @@
   }
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
 }
