@@ -11,13 +11,13 @@ function NavLink({ href, text }: { href: string, text: string }) {
     );
 }
 
-function DropDownLink({ href, text, children }: {
+function DropDownLink({ href, text, links }: {
     href: string,
     text: string,
-    children: string[]
+    links: string[]
 }
 ) {
-    children.sort();
+    links.sort();
     return (
         <div className="relative group mx-4">
             <Link
@@ -35,7 +35,7 @@ function DropDownLink({ href, text, children }: {
             </Link>
 
             <div className="absolute left-0 mt-2 w-80 bg-black/90 origin-top transform scale-y-0 opacity-0 transition-all duration-200 group-hover:scale-y-100 group-hover:opacity-100">
-                {children.map((child) => (
+                {links.map((child) => (
                     <Link
                         key={child}
                         href="#"
@@ -61,7 +61,7 @@ export default function Navbar() {
                     <NavLink href="#" text="Home" />
                     <NavLink href="#" text="Blog" />
 
-                    <DropDownLink href="#" text="Destinations" children={["Punjab", "Himachal Pradesh", "Ladakh", "Andaman & Nicobar Islands"]} />
+                    <DropDownLink href="#" text="Destinations" links={["Punjab", "Himachal Pradesh", "Ladakh", "Andaman & Nicobar Islands"]} />
 
                     <NavLink href="#" text="Birds" />
                     <NavLink href="#" text="Gallery" />
