@@ -1,6 +1,11 @@
+"use client";
+
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import { useState, useEffect, useRef } from 'react';
+import { useRouter } from "next/navigation";
 
 function NavLink({ href, text }: { href: string, text: string }) {
     return (
@@ -50,29 +55,79 @@ function DropDownLink({ href, text, links }: {
 }
 
 export default function Navbar() {
+    const [searchBar, setSearchBar] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+    const router = useRouter();
+
+    const handleSearchSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log("Searched Value:", searchQuery);
+        toggleSearch();
+        if (!searchQuery.trim()) return;
+        router.push(`/search/${encodeURIComponent(searchQuery.toLowerCase())}`);
+    };
+
+    const toggleSearch = () => {
+        setSearchBar(!searchBar);
+    }
+
+    useEffect(() => {
+        if (searchBar && searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
+    }, [searchBar]);
+
     return (
-        <nav className="relative w-full bg-black z-[10] px-16 py-6">
-            <div className="w-full flex items-center">
-                <div className="flex-1">
-                    <h1 className="text-white text-4xl font-ImperialScript">Birding With Arjun</h1>
+        <nav className="relative w-full bg-black z-[10] px-36 py-6">
+            <div className="relative w-full">
+                <div className='flex h-full items-center'>
+                    <div className="flex-1">
+                        <h1 className="text-white text-4xl font-ImperialScript">Birding With Arjun</h1>
+                    </div>
+
+                    <div className="flex-1 flex justify-end h-full items-center">
+                        <NavLink href="#" text="Home" />
+                        <NavLink href="#" text="Blog" />
+
+                        <DropDownLink href="#" text="Destinations" links={["Punjab", "Himachal Pradesh", "Ladakh", "Andaman & Nicobar Islands"]} />
+
+                        <NavLink href="#" text="Birds" />
+                        <NavLink href="#" text="Gallery" />
+                        <NavLink href="#" text="About" />
+                        <NavLink href="#" text="Contact" />
+
+                        {/* // TODO: Add search functionality */}
+                        <FontAwesomeIcon
+                            icon={faSearch}
+                            className="text-gray-200/80 hover:text-green-500/75 transition-all duration-200 text-sm ml-4 cursor-pointer"
+                            onClick={toggleSearch}
+                        />
+                    </div>
                 </div>
+                {searchBar && (
+                    <div className="absolute inset-0 bg-black flex items-center text-white justify-end border-b border-gray-500">
+                        <form onSubmit={handleSearchSubmit} className="flex w-full items-center">
+                            <input
+                                ref={searchInputRef}
+                                type="text"
+                                placeholder="Search something here..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="bg-transparent text-white w-full px-4 focus:outline-none"
+                            />
+                            <button type="submit" className="hidden"></button>
+                            <FontAwesomeIcon
+                                icon={faTimes}
+                                className="ml-4 text-[20px] text-gray-200/80 hover:text-green-500/75 transition-all transform hover:rotate-180 duration-200 cursor-pointer"
+                                onClick={toggleSearch}
+                            />
+                        </form>
+                    </div>
+                )}
 
-                <div className="flex-1 flex justify-end h-full items-center">
-                    <NavLink href="#" text="Home" />
-                    <NavLink href="#" text="Blog" />
-
-                    <DropDownLink href="#" text="Destinations" links={["Punjab", "Himachal Pradesh", "Ladakh", "Andaman & Nicobar Islands"]} />
-
-                    <NavLink href="#" text="Birds" />
-                    <NavLink href="#" text="Gallery" />
-                    <NavLink href="#" text="About" />
-                    <NavLink href="#" text="Contact" />
-                    
-                    {/* // TODO: Add search functionality */}
-                    <FontAwesomeIcon
-                        icon={faSearch}
-                        className="text-gray-200/80 hover:text-green-500/75 transition-all duration-200 text-sm ml-4 cursor-pointer"/>
-                </div>
             </div>
         </nav>
     );
