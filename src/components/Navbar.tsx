@@ -1,54 +1,112 @@
 "use client";
 
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faSearch, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
-
-import { useState, useEffect, useRef } from 'react';
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faAngleDown,
+    faSearch,
+    faTimes,
+    faBars,
+} from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
-function NavLink({ href, text }: { href: string, text: string }) {
+function NavLink({ href, text }: { href: string; text: string }) {
     return (
-        <Link
-            href={href}
-            className="hover:text-green-500/75 transition-colors duration-200 text-gray-200/80 text-sm mx-4 uppercase"
-        >{text}</Link>
+        <div className="w-full border-b border-gray-500/20 xl:border-0">
+            <Link
+                href={href}
+                className="block px-4 py-2 text-black xl:text-gray-200/80 text-md xl:text-sm uppercase hover:text-green-500/75 transition-colors duration-200 md:hover:bg-transparent hover:bg-gray-100/30"
+            >
+                {text}
+            </Link>
+        </div>
     );
 }
 
-function DropDownLink({ href, text, links }: {
-    href: string,
-    text: string,
-    links: string[]
+interface DropDownLinkProps {
+    href: string;
+    text: string;
+    links: string[][];
 }
-) {
+
+function DropDownLink({ href, text, links }: DropDownLinkProps) {
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+    const handleMobileToggle = () => {
+        setMobileOpen((prev) => !prev);
+    };
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setMobileOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     links.sort();
+
     return (
-        <div className="relative group mx-4">
-            <Link
-                href={href}
-                className="group-hover:text-green-500/75 text-gray-200/80 transition-colors duration-200 uppercase"
-            >
-                <div className="flex items-center text-sm">
+        <div ref={dropdownRef}>
+            <div className="block md:hidden w-full border-b border-gray-500/20">
+                <button
+                    onClick={handleMobileToggle}
+                    className="group flex items-center uppercase text-md text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-green-500/75 transition-colors duration-200"
+                >
                     {text}
                     <FontAwesomeIcon
                         icon={faAngleDown}
-                        className="ml-1 text-[12px] text-gray-200/80 group-hover:text-green-500/75 transition-all transform group-hover:rotate-180 duration-200"
+                        className={`ml-1 text-[12px] transition-transform duration-300 ${mobileOpen ? "rotate-180 text-green-500/75" : ""
+                            } group-hover:text-green-500`}
                     />
+                </button>
+                <div
+                    className={`overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                >
+                    {links.map((child) => (
+                        <Link
+                            key={child[0]}
+                            href={child[1]}
+                            className="block px-7 py-2 text-black uppercase hover:bg-gray-100 hover:text-green-500/75 transition-colors duration-200"
+                        >
+                            {child[0]}
+                        </Link>
+                    ))}
                 </div>
-                <div className="absolute left-1/2 bottom-0 h-[2px] w-0 bg-green-500 transition-all duration-200 group-hover:w-full group-hover:left-0"></div>
-            </Link>
-
-            <div className="absolute left-0 mt-2 w-80 bg-black/90 origin-top transform scale-y-0 opacity-0 transition-all duration-200 group-hover:scale-y-100 group-hover:opacity-100">
-                {links.map((child) => (
-                    <Link
-                        key={child}
-                        href="#"
-                        className="block px-4 py-3 hover:text-green-500/75 transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase text-sm"
-                    >
-                        {child}
-                    </Link>
-                ))}
+            </div>
+            <div className="relative hidden md:block group mx-4">
+                <Link
+                    href={href}
+                    className="group-hover:text-green-500/75 text-gray-200/80 transition-colors duration-200 uppercase"
+                >
+                    <div className="flex items-center">
+                        {text}
+                        <FontAwesomeIcon
+                            icon={faAngleDown}
+                            className="ml-1 text-[12px] text-gray-200/80 group-hover:text-green-500/75 transition-transform duration-300 group-hover:rotate-180"
+                        />
+                    </div>
+                    <div className="absolute left-1/2 bottom-0 h-[2px] w-0 bg-green-500 transition-all duration-200 group-hover:w-full group-hover:left-0" />
+                </Link>
+                <div className="absolute left-0 mt-2 w-80 bg-black/90 origin-top transform scale-y-0 opacity-0 transition-all duration-200 group-hover:scale-y-100 group-hover:opacity-100">
+                    {links.map((child) => (
+                        <Link
+                            key={child[0]}
+                            href={child[1]}
+                            className="block px-4 py-3 hover:text-green-500/75 transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase"
+                        >
+                            {child[0]}
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     );
@@ -57,14 +115,12 @@ function DropDownLink({ href, text, links }: {
 export default function Navbar() {
     const [searchBar, setSearchBar] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const searchInputRef = useRef<HTMLInputElement | null>(null);
-
     const router = useRouter();
 
     const handleSearchSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Searched Value:", searchQuery);
         toggleSearch();
         if (!searchQuery.trim()) return;
         router.push(`/search/${encodeURIComponent(searchQuery.toLowerCase())}`);
@@ -72,7 +128,15 @@ export default function Navbar() {
 
     const toggleSearch = () => {
         setSearchBar(!searchBar);
-    }
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
+
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+    };
 
     useEffect(() => {
         if (searchBar && searchInputRef.current) {
@@ -83,25 +147,34 @@ export default function Navbar() {
     return (
         <nav className="relative w-full bg-black z-[10] px-4 xl:px-36 py-6">
             <div className="relative w-full">
-                <div className='flex h-full items-center'>
-                    <FontAwesomeIcon icon={faBars} className="text-gray-200/80 text-xl cursor-pointer block xl:hidden" />
-
+                <div className="flex h-full items-center">
+                    <FontAwesomeIcon
+                        icon={faBars}
+                        className="text-gray-200/80 text-xl cursor-pointer block xl:hidden"
+                        onClick={toggleMobileMenu}
+                    />
                     <div className="flex-1">
-                        <h1 className="text-white text-4xl font-ImperialScript text-center xl:text-left">Birding With Arjun</h1>
+                        <h1 className="text-white text-4xl font-ImperialScript text-center xl:text-left">
+                            Birding With Arjun
+                        </h1>
                     </div>
-
                     <div className="flex-1 justify-end h-full items-center xl:flex hidden">
                         <NavLink href="#" text="Home" />
                         <NavLink href="#" text="Blog" />
-
-                        <DropDownLink href="#" text="Destinations" links={["Punjab", "Himachal Pradesh", "Ladakh", "Andaman & Nicobar Islands"]} />
-
+                        <DropDownLink
+                            href="#"
+                            text="Destinations"
+                            links={[
+                                ["Punjab", "punjab"],
+                                ["Himachal Pradesh", "himachalpradesh"],
+                                ["Ladakh", "ladakh"],
+                                ["Andaman & Nicobar Islands", "andamanandnicobarislands"],
+                            ]}
+                        />
                         <NavLink href="#" text="Birds" />
                         <NavLink href="#" text="Gallery" />
                         <NavLink href="#" text="About" />
                         <NavLink href="#" text="Contact" />
-
-                        {/* // TODO: Add search functionality */}
                         <FontAwesomeIcon
                             icon={faSearch}
                             className="text-gray-200/80 hover:text-green-500/75 transition-all duration-200 text-sm ml-4 cursor-pointer"
@@ -125,7 +198,7 @@ export default function Navbar() {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="bg-transparent text-white w-full md:px-4 focus:outline-none"
                             />
-                            <button type="submit" className="hidden"></button>
+                            <button type="submit" className="hidden" />
                             <FontAwesomeIcon
                                 icon={faTimes}
                                 className="ml-4 text-[20px] text-gray-200/80 hover:text-green-500/75 transition-all transform hover:rotate-180 duration-200 cursor-pointer"
@@ -134,7 +207,40 @@ export default function Navbar() {
                         </form>
                     </div>
                 )}
+            </div>
 
+            {mobileMenuOpen && (
+                <div
+                    className="fixed inset-0 bg-black/50 z-40"
+                    onClick={closeMobileMenu}
+                />
+            )}
+
+            <div
+                className={`fixed top-0 left-0 h-screen bg-white text-black py-6 px-4 w-[75%] xl:hidden z-50 transform ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                    } transition-transform duration-300`}
+            >
+                <h1 className="text-black text-4xl font-ImperialScript text-center xl:text-left mt-10 mb-20">
+                    Birding With Arjun
+                </h1>
+                <NavLink href="#" text="Home" />
+                <NavLink href="#" text="Blog" />
+
+                <DropDownLink
+                    href="#"
+                    text="Destinations"
+                    links={[
+                        ["Punjab", "punjab"],
+                        ["Himachal Pradesh", "himachalpradesh"],
+                        ["Ladakh", "ladakh"],
+                        ["Andaman & Nicobar Islands", "andamanandnicobarislands"],
+                    ]}
+                />
+
+                <NavLink href="#" text="Birds" />
+                <NavLink href="#" text="Gallery" />
+                <NavLink href="#" text="About" />
+                <NavLink href="#" text="Contact" />
             </div>
         </nav>
     );

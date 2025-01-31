@@ -10,7 +10,7 @@ export default function Hero() {
                         src="/hero.jpg"
                         alt="Hero Background"
                         fill
-                        objectFit="cover"
+                        className='object-cover'
                         priority
                     />
                 </div>
