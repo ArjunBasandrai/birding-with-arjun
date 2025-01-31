@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faSearch, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from "next/navigation";
@@ -81,14 +81,16 @@ export default function Navbar() {
     }, [searchBar]);
 
     return (
-        <nav className="relative w-full bg-black z-[10] px-36 py-6">
+        <nav className="relative w-full bg-black z-[10] px-4 xl:px-36 py-6">
             <div className="relative w-full">
                 <div className='flex h-full items-center'>
+                    <FontAwesomeIcon icon={faBars} className="text-gray-200/80 text-xl cursor-pointer block xl:hidden" />
+
                     <div className="flex-1">
-                        <h1 className="text-white text-4xl font-ImperialScript">Birding With Arjun</h1>
+                        <h1 className="text-white text-4xl font-ImperialScript text-center xl:text-left">Birding With Arjun</h1>
                     </div>
 
-                    <div className="flex-1 flex justify-end h-full items-center">
+                    <div className="flex-1 justify-end h-full items-center xl:flex hidden">
                         <NavLink href="#" text="Home" />
                         <NavLink href="#" text="Blog" />
 
@@ -106,6 +108,11 @@ export default function Navbar() {
                             onClick={toggleSearch}
                         />
                     </div>
+                    <FontAwesomeIcon
+                        icon={faSearch}
+                        className="text-gray-200/80 hover:text-green-500/75 transition-all duration-200 text-md ml-4 cursor-pointer block xl:hidden"
+                        onClick={toggleSearch}
+                    />
                 </div>
                 {searchBar && (
                     <div className="absolute inset-0 bg-black flex items-center text-white justify-end border-b border-gray-500">
@@ -116,7 +123,7 @@ export default function Navbar() {
                                 placeholder="Search something here..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="bg-transparent text-white w-full px-4 focus:outline-none"
+                                className="bg-transparent text-white w-full md:px-4 focus:outline-none"
                             />
                             <button type="submit" className="hidden"></button>
                             <FontAwesomeIcon
