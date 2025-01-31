@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/components/Navbar";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -12,8 +13,11 @@ function SearchContent() {
 
 export default function Search() {
     return (
-        <Suspense fallback={<h1>Loading...</h1>}>
-            <SearchContent />
-        </Suspense>
+        <>
+            <Navbar />
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <SearchContent />
+            </Suspense>
+        </>
     );
 }

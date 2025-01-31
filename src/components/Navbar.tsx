@@ -7,7 +7,9 @@ import {
     faSearch,
     faTimes,
     faBars,
+    faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram, faFacebook, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
@@ -161,6 +163,7 @@ export default function Navbar() {
                     <div className="flex-1 justify-end h-full items-center xl:flex hidden">
                         <NavLink href="#" text="Home" />
                         <NavLink href="#" text="Blog" />
+
                         <DropDownLink
                             href="#"
                             text="Destinations"
@@ -171,6 +174,7 @@ export default function Navbar() {
                                 ["Andaman & Nicobar Islands", "andamanandnicobarislands"],
                             ]}
                         />
+
                         <NavLink href="#" text="Birds" />
                         <NavLink href="#" text="Gallery" />
                         <NavLink href="#" text="About" />
@@ -217,12 +221,36 @@ export default function Navbar() {
             )}
 
             <div
-                className={`fixed top-0 left-0 h-screen bg-white text-black py-6 px-4 w-[75%] xl:hidden z-50 transform ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                className={`fixed top-0 left-0 h-screen bg-white text-black py-6 px-4 w-[85%] xl:hidden z-50 transform ${mobileMenuOpen ? "translate-x-0 mobile-navbar-shadow" : "-translate-x-full"
                     } transition-transform duration-300`}
             >
-                <h1 className="text-black text-4xl font-ImperialScript text-center xl:text-left mt-10 mb-20">
-                    Birding With Arjun
-                </h1>
+                <Link href="/" className="block">
+                    <h1 className="text-black text-4xl font-ImperialScript text-center xl:text-left mt-10 mb-2 py-2">
+                        Birding With Arjun
+                    </h1>
+                </Link>
+
+                <div className="flex">
+                    <div className="flex w-full justify-center space-x-4 mb-20">
+                        <Link href="https://www.instagram.com/birdingwitharjun" target="_blank">
+                            <FontAwesomeIcon icon={faInstagram} className="text-black/60 hover:text-pink-500 text-xl transition-colors duration-200" />
+                        </Link>
+                        <Link href="https://www.facebook.com/arjun.basandrai" target="_blank">
+                            <FontAwesomeIcon icon={faFacebook} className="text-black/60 hover:text-blue-500 text-xl transition-colors duration-200" />
+                        </Link>
+                        <Link href="https://github.com/ArjunBasandrai" target="_blank">
+                            <FontAwesomeIcon icon={faGithub} className="text-black/60 hover:text-black text-xl transition-colors duration-200" />
+                        </Link>
+                        <Link href="https://www.linkedin.com/in/arjun-basandrai" target="_blank">
+                            <FontAwesomeIcon icon={faLinkedin} className="text-black/60 hover:text-blue-500 text-xl transition-colors duration-200" />
+                        </Link>
+                        <a href="mailto:birdingwitharjun@example.com">
+                            <FontAwesomeIcon icon={faEnvelope} className="text-black/60 hover:text-red-500 text-xl transition-colors duration-200" />
+                        </a>
+                    </div>
+
+                </div>
+
                 <NavLink href="#" text="Home" />
                 <NavLink href="#" text="Blog" />
 
