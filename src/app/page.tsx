@@ -1,5 +1,5 @@
 import Hero from "@/components/HomePage/Hero";
-import QuickLinks from "@/components/HomePage/QuickLinks";
+import RecentAdventures from "@/components/HomePage/RecentAdventures";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
           <Hero />
         </div>
       </div>
-      <QuickLinks />
+      <RecentAdventures />
     </>
   );
 }

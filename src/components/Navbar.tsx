@@ -18,7 +18,7 @@ function NavLink({ href, text }: { href: string; text: string }) {
         <div className="w-full border-b border-gray-500/20 xl:border-0">
             <Link
                 href={href}
-                className="block px-4 py-2 text-black xl:text-gray-200/80 text-md xl:text-sm uppercase hover:text-green-500/75 transition-colors duration-200 md:hover:bg-transparent hover:bg-gray-100/30"
+                className="block px-4 py-2 text-black xl:text-gray-200/80 text-md xl:text-sm uppercase hover:text-green-500/75 transition-colors duration-200 xl:hover:bg-transparent hover:bg-gray-100/30"
             >
                 {text}
             </Link>
@@ -57,7 +57,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
 
     return (
         <div ref={dropdownRef}>
-            <div className="block md:hidden w-full border-b border-gray-500/20">
+            <div className="block xl:hidden w-full border-b border-gray-500/20">
                 <button
                     onClick={handleMobileToggle}
                     className="group flex items-center uppercase text-md text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-green-500/75 transition-colors duration-200"
@@ -84,7 +84,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                     ))}
                 </div>
             </div>
-            <div className="relative hidden md:block group mx-4">
+            <div className="relative hidden xl:block group mx-4">
                 <Link
                     href={href}
                     className="group-hover:text-green-500/75 text-gray-200/80 transition-colors duration-200 uppercase"
@@ -201,7 +201,7 @@ export default function Navbar() {
                                 placeholder="Search something here..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="bg-transparent text-white w-full md:px-4 focus:outline-none"
+                                className="bg-transparent text-white w-full focus:outline-none"
                             />
                             <button type="submit" className="hidden" />
                             <FontAwesomeIcon
@@ -211,8 +211,8 @@ export default function Navbar() {
                             />
                         </form>
                     </div>
-            </div>
-
+                )}
+                </div>
             {mobileMenuOpen && (
                 <div
                     className="fixed inset-0 bg-black/50 z-40"
