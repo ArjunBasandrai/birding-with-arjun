@@ -129,6 +129,7 @@ export default function Navbar() {
     };
 
     const toggleSearch = () => {
+        setSearchQuery("");
         setSearchBar(!searchBar);
     };
 
@@ -210,7 +211,6 @@ export default function Navbar() {
                             />
                         </form>
                     </div>
-                )}
             </div>
 
             {mobileMenuOpen && (

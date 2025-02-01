@@ -14,6 +14,7 @@ export default {
       },
       fontFamily: {
         ImperialScript: ['ImperialScript', 'serif'],
+        Atma: ['Atma', 'sans-serif'],
       }
     },
   },

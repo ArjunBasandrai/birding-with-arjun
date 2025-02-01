@@ -1,7 +1,7 @@
 export default function QuickLinks() {
     return (
         <>
-            <div className=""></div>
+            {/* <div className="bg-white text-black">Hello</div> */}
         </>
     );
 }
