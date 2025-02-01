@@ -20,7 +20,7 @@ export default function Hero() {
                     <h1 className="text-center text-3xl xl:text-9xl font-medium font-Atma text-shadow">Hi, I&apos;m Arjun</h1>
                     <p className="px-4 text-xl xl:max-w-[800px] text-center mt-5 text-shadow">This is my travel and birding blog where I share stories from the trails I walk, the skies I watch, and the wonders I discover along the way.</p>
 
-                    <Link href="blog" className="border-white border px-10 py-3 mt-7 uppercase text-xl transition-all duration-300 hover:bg-green-500/75 hover:border-green-500/75 text-shadow">Explore with me</Link>
+                    <Link href="blog" className="border-white border px-10 py-3 mt-7 uppercase text-xl transition-all duration-300 hover:bg-primary hover:border-primary text-shadow">Explore with me</Link>
                 </div>
             </div>
         </>

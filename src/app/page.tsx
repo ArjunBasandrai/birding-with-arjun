@@ -1,5 +1,6 @@
 import Hero from "@/components/HomePage/Hero";
 import RecentAdventures from "@/components/HomePage/RecentAdventures";
+import RecentPosts from "@/components/HomePage/RecentPosts";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         </div>
       </div>
       <RecentAdventures />
+      <RecentPosts />
     </>
   );
 }

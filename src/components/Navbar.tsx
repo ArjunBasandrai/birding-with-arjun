@@ -18,7 +18,7 @@ function NavLink({ href, text }: { href: string; text: string }) {
         <div className="w-full border-b border-gray-500/20 xl:border-0">
             <Link
                 href={href}
-                className="block px-4 py-2 text-black xl:text-gray-200/80 text-md xl:text-sm uppercase hover:text-green-500/75 transition-colors duration-200 xl:hover:bg-transparent hover:bg-gray-100/30"
+                className="block px-4 py-2 text-black xl:text-gray-200/80 text-md xl:text-sm uppercase hover:text-primary transition-colors duration-200 xl:hover:bg-transparent hover:bg-gray-100/30"
             >
                 {text}
             </Link>
@@ -60,13 +60,13 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
             <div className="block xl:hidden w-full border-b border-gray-500/20">
                 <button
                     onClick={handleMobileToggle}
-                    className="group flex items-center uppercase text-md text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-green-500/75 transition-colors duration-200"
+                    className="group flex items-center uppercase text-md text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                 >
                     {text}
                     <FontAwesomeIcon
                         icon={faAngleDown}
-                        className={`ml-1 text-[12px] transition-transform duration-300 ${mobileOpen ? "rotate-180 text-green-500/75" : ""
-                            } group-hover:text-green-500`}
+                        className={`ml-1 text-[12px] transition-transform duration-300 ${mobileOpen ? "rotate-180 text-primary" : ""
+                            } group-hover:text-primary`}
                     />
                 </button>
                 <div
@@ -77,7 +77,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                         <Link
                             key={child[0]}
                             href={child[1]}
-                            className="block px-7 py-2 text-black uppercase hover:bg-gray-100 hover:text-green-500/75 transition-colors duration-200"
+                            className="block px-7 py-2 text-black uppercase hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                         >
                             {child[0]}
                         </Link>
@@ -87,23 +87,23 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
             <div className="relative hidden xl:block group mx-4">
                 <Link
                     href={href}
-                    className="group-hover:text-green-500/75 text-gray-200/80 transition-colors duration-200 uppercase"
+                    className="group-hover:text-primary text-gray-200/80 transition-colors duration-200 uppercase"
                 >
                     <div className="flex items-center">
                         {text}
                         <FontAwesomeIcon
                             icon={faAngleDown}
-                            className="ml-1 text-[12px] text-gray-200/80 group-hover:text-green-500/75 transition-transform duration-300 group-hover:rotate-180"
+                            className="ml-1 text-[12px] text-gray-200/80 group-hover:text-primary transition-transform duration-300 group-hover:rotate-180"
                         />
                     </div>
-                    <div className="absolute left-1/2 bottom-0 h-[2px] w-0 bg-green-500 transition-all duration-200 group-hover:w-full group-hover:left-0" />
+                    <div className="absolute left-1/2 bottom-0 h-[2px] w-0 bg-primary transition-all duration-200 group-hover:w-full group-hover:left-0" />
                 </Link>
                 <div className="absolute left-0 mt-2 w-80 bg-black/90 origin-top transform scale-y-0 opacity-0 transition-all duration-200 group-hover:scale-y-100 group-hover:opacity-100">
                     {links.map((child) => (
                         <Link
                             key={child[0]}
                             href={child[1]}
-                            className="block px-4 py-3 hover:text-green-500/75 transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase"
+                            className="block px-4 py-3 hover:text-primary transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase"
                         >
                             {child[0]}
                         </Link>
@@ -182,13 +182,13 @@ export default function Navbar() {
                         <NavLink href="#" text="Contact" />
                         <FontAwesomeIcon
                             icon={faSearch}
-                            className="text-gray-200/80 hover:text-green-500/75 transition-all duration-200 text-sm ml-4 cursor-pointer"
+                            className="text-gray-200/80 hover:text-primary transition-all duration-200 text-sm ml-4 cursor-pointer"
                             onClick={toggleSearch}
                         />
                     </div>
                     <FontAwesomeIcon
                         icon={faSearch}
-                        className="text-gray-200/80 hover:text-green-500/75 transition-all duration-200 text-md ml-4 cursor-pointer block xl:hidden"
+                        className="text-gray-200/80 hover:text-primary transition-all duration-200 text-md ml-4 cursor-pointer block xl:hidden"
                         onClick={toggleSearch}
                     />
                 </div>
@@ -206,7 +206,7 @@ export default function Navbar() {
                             <button type="submit" className="hidden" />
                             <FontAwesomeIcon
                                 icon={faTimes}
-                                className="ml-4 text-[20px] text-gray-200/80 hover:text-green-500/75 transition-all transform hover:rotate-180 duration-200 cursor-pointer"
+                                className="ml-4 text-[20px] text-gray-200/80 hover:text-primary transition-all transform hover:rotate-180 duration-200 cursor-pointer"
                                 onClick={toggleSearch}
                             />
                         </form>
