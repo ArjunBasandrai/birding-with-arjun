@@ -60,7 +60,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
             <div className="block xl:hidden w-full border-b border-gray-500/20">
                 <button
                     onClick={handleMobileToggle}
-                    className="group flex items-center uppercase text-md text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
+                    className="group flex items-center uppercase text-md xl:text-sm text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                 >
                     {text}
                     <FontAwesomeIcon
@@ -77,7 +77,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                         <Link
                             key={child[0]}
                             href={child[1]}
-                            className="block px-7 py-2 text-black uppercase hover:bg-gray-100 hover:text-primary transition-colors duration-200"
+                            className="block px-7 py-2 text-black text-md xl:text-sm uppercase hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                         >
                             {child[0]}
                         </Link>
@@ -89,7 +89,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                     href={href}
                     className="group-hover:text-primary text-gray-200/80 transition-colors duration-200 uppercase"
                 >
-                    <div className="flex items-center">
+                    <div className="flex items-center text-md xl:text-sm">
                         {text}
                         <FontAwesomeIcon
                             icon={faAngleDown}
@@ -103,7 +103,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                         <Link
                             key={child[0]}
                             href={child[1]}
-                            className="block px-4 py-3 hover:text-primary transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase"
+                            className="block px-4 py-3 hover:text-primary transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase text-md xl:text-sm"
                         >
                             {child[0]}
                         </Link>
@@ -244,9 +244,9 @@ export default function Navbar() {
                         <Link href="https://www.linkedin.com/in/arjun-basandrai" target="_blank">
                             <FontAwesomeIcon icon={faLinkedin} className="text-black/60 hover:text-blue-500 text-xl transition-colors duration-200" />
                         </Link>
-                        <a href="mailto:birdingwitharjun@example.com">
+                        <Link href="mailto:birdingwitharjun@example.com">
                             <FontAwesomeIcon icon={faEnvelope} className="text-black/60 hover:text-red-500 text-xl transition-colors duration-200" />
-                        </a>
+                        </Link>
                     </div>
 
                 </div>

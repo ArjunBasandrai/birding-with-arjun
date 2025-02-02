@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface RecentAdventuresProps {
+interface AlbumsProps {
     data: {
         title: string;
         img: string;
@@ -9,18 +9,18 @@ interface RecentAdventuresProps {
     }[];
 }
 
-export default function RecentAdventures() {
-    const data: RecentAdventuresProps["data"] = [
-        { title: "Andaman & Nicobar Islands 2025", img: "hero.jpg", href: "/andaman" },
-        { title: "Ladakh 2024", img: "hero.jpg", href: "/ladakh" },
+export default function Albums() {
+    const data: AlbumsProps["data"] = [
+        { title: "Ladakh 2024", img: "hero.jpg", href: "/andaman" },
         { title: "Ooty & Conoor 2024", img: "hero.jpg", href: "/fishing" },
+        { title: "Spiti 2019", img: "hero.jpg", href: "/ladakh" },
     ];
 
     return (
         <>
             <section className="bg-white text-black py-14 xl:px-10">
                 <div className="relative w-full flex justify-center items-center">
-                    <h2 className="text-5xl xl:text-4xl font-serif inline-block text-center z-[2] bg-white px-8">My Recent Adventures</h2>
+                    <h2 className="text-5xl xl:text-4xl font-serif inline-block text-center z-[2] bg-white px-8">Scenes from My Travels</h2>
                     <div className="max-w-6xl mx-auto w-full absolute top-[50%] hidden xl:block">
                         <div className="absolute top-0 left-0 bg-gradient-to-r from-transparent to-primary w-[50%] h-[2px] z-[1]"></div>
                         <div className="absolute top-0 right-0 bg-gradient-to-l from-transparent to-primary w-[50%] h-[2px] z-[1]"></div>
@@ -46,6 +46,9 @@ export default function RecentAdventures() {
                             </Link>
                         </div>
                     ))}
+                </div>
+                <div className="w-full text-black flex justify-center items-center">
+                    <Link href="gallery" className="block border-black border px-10 py-3 mt-7 uppercase text-xl transition-all duration-300 hover:bg-primary hover:border-primary hover:text-white">Explore more</Link>
                 </div>
             </section>
         </>

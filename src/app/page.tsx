@@ -1,3 +1,5 @@
+import Albums from "@/components/HomePage/Albums";
+import Contact from "@/components/HomePage/Contact";
 import Hero from "@/components/HomePage/Hero";
 import RecentAdventures from "@/components/HomePage/RecentAdventures";
 import RecentPosts from "@/components/HomePage/RecentPosts";
@@ -14,6 +16,8 @@ export default function Home() {
       </div>
       <RecentAdventures />
       <RecentPosts />
+      <Albums />
+      <Contact />
     </>
   );
 }
