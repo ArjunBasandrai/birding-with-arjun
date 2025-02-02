@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Albums from "@/components/HomePage/Albums";
 import Contact from "@/components/HomePage/Contact";
 import Hero from "@/components/HomePage/Hero";
@@ -18,6 +19,7 @@ export default function Home() {
       <RecentPosts />
       <Albums />
       <Contact />
+      <Footer />
     </>
   );
 }

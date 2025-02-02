@@ -6,7 +6,7 @@ import { faInstagram, faFacebook, faGithub, faLinkedin } from "@fortawesome/free
 export default function Contact() {
   return (
     <div
-      className="relative bg-purple-500 text-white px-10 py-24 bg-cover bg-center flex flex-col justify-center items-center"
+      className="relative text-white px-10 py-24 bg-cover bg-center flex flex-col justify-center items-center"
       style={{ backgroundImage: 'url("/hero.jpg")' }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
