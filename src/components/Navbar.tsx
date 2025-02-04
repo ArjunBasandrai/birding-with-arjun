@@ -162,7 +162,7 @@ export default function Navbar() {
                         </h1>
                     </div>
                     <div className="flex-1 justify-end h-full items-center xl:flex hidden">
-                        <NavLink href="#" text="Home" />
+                        <NavLink href="/" text="Home" />
                         <NavLink href="#" text="Blog" />
 
                         <DropDownLink
@@ -178,8 +178,8 @@ export default function Navbar() {
 
                         <NavLink href="#" text="Birds" />
                         <NavLink href="#" text="Gallery" />
-                        <NavLink href="#" text="About" />
-                        <NavLink href="#" text="Contact" />
+                        <NavLink href="about" text="About" />
+                        <NavLink href="contact" text="Contact" />
                         <FontAwesomeIcon
                             icon={faSearch}
                             className="text-gray-200/80 hover:text-primary transition-all duration-200 text-sm ml-4 cursor-pointer"
@@ -251,7 +251,7 @@ export default function Navbar() {
 
                 </div>
 
-                <NavLink href="#" text="Home" />
+                <NavLink href="/" text="Home" />
                 <NavLink href="#" text="Blog" />
 
                 <DropDownLink
@@ -267,8 +267,8 @@ export default function Navbar() {
 
                 <NavLink href="#" text="Birds" />
                 <NavLink href="#" text="Gallery" />
-                <NavLink href="#" text="About" />
-                <NavLink href="#" text="Contact" />
+                <NavLink href="about" text="About" />
+                <NavLink href="contact" text="Contact" />
             </div>
         </nav>
     );
