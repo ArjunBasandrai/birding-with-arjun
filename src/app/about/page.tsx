@@ -1,4 +1,7 @@
 import AboutHero from "@/components/AboutPage/Hero";
+import Profile from "@/components/AboutPage/Profile";
+import Footer from "@/components/Footer";
+import Contact from "@/components/HomePage/Contact";
 import Navbar from "@/components/Navbar";
 
 export default function About() {
@@ -6,6 +9,9 @@ export default function About() {
         <>
             <Navbar />
             <AboutHero />
+            <Profile />
+            <Contact />
+            <Footer />
         </>
     );
 }

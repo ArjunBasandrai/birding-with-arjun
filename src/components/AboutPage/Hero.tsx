@@ -143,6 +143,10 @@ export default function AboutHero() {
           className="text-black/40 hover:text-black/60 text-lg xl:text-md transition-colors duration-300 mt-1"
         />
       </button>
+
+      <div className="absolute top-0 w-full h-full bg-black/30 text-black flex items-center justify-center">
+        <h1 className="text-6xl xl:text-8xl font-Atma text-white">About</h1>
+      </div>
     </section>
   );
 }
