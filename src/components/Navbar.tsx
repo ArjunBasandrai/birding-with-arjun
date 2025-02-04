@@ -125,7 +125,7 @@ export default function Navbar() {
         e.preventDefault();
         toggleSearch();
         if (!searchQuery.trim()) return;
-        router.push(`/search/${encodeURIComponent(searchQuery.toLowerCase())}`);
+        router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
     };
 
     const toggleSearch = () => {
