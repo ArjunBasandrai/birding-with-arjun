@@ -36,9 +36,9 @@ function Post({ image, alt, title, description, link, reverse }: PostProps) {
 
 export default function RecentPosts() {
     return (
-        <section className="bg-white text-black xl:px-10 pb-1">
+        <section className="bg-background text-black xl:px-10 pb-1">
             <div className="relative w-full flex justify-center items-center">
-                <h2 className="text-5xl xl:text-4xl font-serif inline-block text-center z-[2] bg-white xl:px-8">
+                <h2 className="text-5xl xl:text-4xl font-serif inline-block text-center z-[2] bg-background xl:px-8">
                     Latest Posts
                 </h2>
                 <div className="xl:max-w-8xl mx-auto w-full absolute top-[50%] hidden xl:block">

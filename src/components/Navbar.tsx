@@ -169,17 +169,17 @@ export default function Navbar() {
                             href="#"
                             text="Destinations"
                             links={[
-                                ["Punjab", "punjab"],
-                                ["Himachal Pradesh", "himachalpradesh"],
-                                ["Ladakh", "ladakh"],
-                                ["Andaman & Nicobar Islands", "andamanandnicobarislands"],
+                                ["Punjab", "/punjab"],
+                                ["Himachal Pradesh", "/himachalpradesh"],
+                                ["Ladakh", "/ladakh"],
+                                ["Andaman & Nicobar Islands", "/andamanandnicobarislands"],
                             ]}
                         />
 
                         <NavLink href="#" text="Birds" />
-                        <NavLink href="#" text="Gallery" />
-                        <NavLink href="about" text="About" />
-                        <NavLink href="contact" text="Contact" />
+                        <NavLink href="/gallery" text="Gallery" />
+                        <NavLink href="/about" text="About" />
+                        <NavLink href="/contact" text="Contact" />
                         <FontAwesomeIcon
                             icon={faSearch}
                             className="text-gray-200/80 hover:text-primary transition-all duration-200 text-sm ml-4 cursor-pointer"
@@ -258,17 +258,17 @@ export default function Navbar() {
                     href="#"
                     text="Destinations"
                     links={[
-                        ["Punjab", "punjab"],
-                        ["Himachal Pradesh", "himachalpradesh"],
-                        ["Ladakh", "ladakh"],
-                        ["Andaman & Nicobar Islands", "andamanandnicobarislands"],
+                        ["Punjab", "/punjab"],
+                        ["Himachal Pradesh", "/himachalpradesh"],
+                        ["Ladakh", "/ladakh"],
+                        ["Andaman & Nicobar Islands", "/andamanandnicobarislands"],
                     ]}
                 />
 
                 <NavLink href="#" text="Birds" />
-                <NavLink href="#" text="Gallery" />
-                <NavLink href="about" text="About" />
-                <NavLink href="contact" text="Contact" />
+                <NavLink href="/gallery" text="Gallery" />
+                <NavLink href="/about" text="About" />
+                <NavLink href="/contact" text="Contact" />
             </div>
         </nav>
     );

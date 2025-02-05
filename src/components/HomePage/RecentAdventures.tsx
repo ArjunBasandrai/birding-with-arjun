@@ -18,9 +18,9 @@ export default function RecentAdventures() {
 
     return (
         <>
-            <section className="bg-white text-black py-14 xl:px-10">
+            <section className="bg-background text-black py-14 xl:px-10">
                 <div className="relative w-full flex justify-center items-center">
-                    <h2 className="text-5xl xl:text-4xl font-serif inline-block text-center z-[2] bg-white px-8">My Recent Adventures</h2>
+                    <h2 className="text-5xl xl:text-4xl font-serif inline-block text-center z-[2] bg-background px-8">My Recent Adventures</h2>
                     <div className="max-w-6xl mx-auto w-full absolute top-[50%] hidden xl:block">
                         <div className="absolute top-0 left-0 bg-gradient-to-r from-transparent to-primary w-[50%] h-[2px] z-[1]"></div>
                         <div className="absolute top-0 right-0 bg-gradient-to-l from-transparent to-primary w-[50%] h-[2px] z-[1]"></div>
