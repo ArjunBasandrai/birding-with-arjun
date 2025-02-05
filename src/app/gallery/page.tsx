@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Contact from "@/components/HomePage/Contact";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -67,6 +68,7 @@ export default function Gallery() {
             <Albums title="Birds" albums={bird_albums} />
             <Albums title="Landscapes" albums={landscape_albums} />
             <Albums title="Butterflies" albums={butterfly_albums} />
+            <Contact />            
             <Footer />
         </>
     );

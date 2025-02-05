@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import MasonryGrid from "@/components/GalleryPage/MasonryGrid";
+import Contact from "@/components/HomePage/Contact";
 import Navbar from "@/components/Navbar";
 
 export default function Album() {
@@ -15,6 +16,7 @@ export default function Album() {
                 </div>
                 <MasonryGrid />
             </div>
+            <Contact />
             <Footer />
         </>
     );
