@@ -10,7 +10,7 @@ export default function Contact() {
       style={{ backgroundImage: 'url("/hero.jpg")' }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      <div className="relative z-10 text-white flex flex-col items-center">
+      <div className="relative text-white flex flex-col items-center">
         <h2 className="text-3xl xl:text-6xl font-bold mb-4 text-shadow text-center font-Atma">Let&apos;s Connect</h2>
         <p className="text-shadow text-lg xl:text-xl mb-6 py-4 xl:max-w-3xl text-center">
           Have questions about travel or birding, suggestions for blog topics, or just want to share your thoughts?
