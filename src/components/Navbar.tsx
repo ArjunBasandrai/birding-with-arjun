@@ -36,8 +36,10 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-    const handleMobileToggle = () => {
-        setMobileOpen((prev) => !prev);
+    const handleMobileToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (!(event.target as HTMLElement).closest(".dropdown-text")) {
+            setMobileOpen((prev) => !prev);
+        }
     };
 
     useEffect(() => {
@@ -62,16 +64,24 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                     onClick={handleMobileToggle}
                     className="group flex items-center uppercase text-md xl:text-sm text-black justify-between w-full px-4 py-2 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                 >
-                    {text}
+                    <Link
+                        href={`/${href}`}
+                        className="dropdown-text"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {text}
+                    </Link>
                     <FontAwesomeIcon
                         icon={faAngleDown}
-                        className={`ml-1 text-[12px] transition-transform duration-300 ${mobileOpen ? "rotate-180 text-primary" : ""
-                            } group-hover:text-primary`}
+                        className={`ml-1 text-[12px] transition-transform duration-300 ${
+                            mobileOpen ? "rotate-180 text-primary" : ""
+                        } group-hover:text-primary`}
                     />
                 </button>
                 <div
-                    className={`overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                        }`}
+                    className={`overflow-hidden transition-all duration-300 ${
+                        mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    }`}
                 >
                     {links.map((child) => (
                         <Link
@@ -84,9 +94,10 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                     ))}
                 </div>
             </div>
+
             <div className="relative hidden xl:block group mx-4">
                 <Link
-                    href={href}
+                    href={`/${href}`}
                     className="group-hover:text-primary text-gray-200/80 transition-colors duration-200 uppercase"
                 >
                     <div className="flex items-center text-md xl:text-sm">
@@ -166,7 +177,7 @@ export default function Navbar() {
                         <NavLink href="#" text="Blog" />
 
                         <DropDownLink
-                            href="#"
+                            href="destinations"
                             text="Destinations"
                             links={[
                                 ["Punjab", "/punjab"],
@@ -255,7 +266,7 @@ export default function Navbar() {
                 <NavLink href="#" text="Blog" />
 
                 <DropDownLink
-                    href="#"
+                    href="destinations"
                     text="Destinations"
                     links={[
                         ["Punjab", "/punjab"],
