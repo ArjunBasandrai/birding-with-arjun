@@ -86,7 +86,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                     {links.map((child) => (
                         <Link
                             key={child[0]}
-                            href={child[1]}
+                            href={href + child[1]}
                             className="block px-7 py-2 text-black text-md xl:text-sm uppercase hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                         >
                             {child[0]}
@@ -113,7 +113,7 @@ function DropDownLink({ href, text, links }: DropDownLinkProps) {
                     {links.map((child) => (
                         <Link
                             key={child[0]}
-                            href={child[1]}
+                            href={href + child[1]}
                             className="block px-4 py-3 hover:text-primary transition-colors duration-200 text-gray-200/80 border-b border-gray-500/20 uppercase text-md xl:text-sm"
                         >
                             {child[0]}
