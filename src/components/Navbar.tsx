@@ -181,9 +181,9 @@ export default function Navbar() {
                             text="Destinations"
                             links={[
                                 ["Punjab", "/punjab"],
-                                ["Himachal Pradesh", "/himachalpradesh"],
+                                ["Himachal Pradesh", "/himachal-pradesh"],
                                 ["Ladakh", "/ladakh"],
-                                ["Andaman & Nicobar Islands", "/andamanandnicobarislands"],
+                                ["Andaman & Nicobar Islands", "/andaman-nicobar-islands"],
                             ]}
                         />
 
@@ -270,9 +270,9 @@ export default function Navbar() {
                     text="Destinations"
                     links={[
                         ["Punjab", "/punjab"],
-                        ["Himachal Pradesh", "/himachalpradesh"],
+                        ["Himachal Pradesh", "/himachal-pradesh"],
                         ["Ladakh", "/ladakh"],
-                        ["Andaman & Nicobar Islands", "/andamanandnicobarislands"],
+                        ["Andaman & Nicobar Islands", "/andaman-nicobar-islands"],
                     ]}
                 />
 

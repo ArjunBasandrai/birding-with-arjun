@@ -58,7 +58,7 @@ export default function DestinationGrid() {
                             <React.Fragment key={index}>
                                 {index > 0 && <span className="text-black hidden md:block text-4xl">•</span>}
                                 <Link href={`#${region_name.toLowerCase().replace(/\s+/g, "-")}`}
-                                    className="text-primary text-xl xl:text-2xl uppercase font-bold hover:underline">
+                                    className="text-primary text-xl xl:text-2xl uppercase font-bold hover:text-primary-dark transition-all duration-300">
                                     {region_name}
                                 </Link>
                             </React.Fragment>
