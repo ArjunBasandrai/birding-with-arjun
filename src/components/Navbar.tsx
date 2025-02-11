@@ -187,7 +187,7 @@ export default function Navbar() {
                             ]}
                         />
 
-                        <NavLink href="#" text="Birds" />
+                        <NavLink href="/birds" text="Birds" />
                         <NavLink href="/gallery" text="Gallery" />
                         <NavLink href="/about" text="About" />
                         <NavLink href="/contact" text="Contact" />
@@ -276,7 +276,7 @@ export default function Navbar() {
                     ]}
                 />
 
-                <NavLink href="#" text="Birds" />
+                <NavLink href="/birds" text="Birds" />
                 <NavLink href="/gallery" text="Gallery" />
                 <NavLink href="/about" text="About" />
                 <NavLink href="/contact" text="Contact" />

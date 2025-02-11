@@ -52,7 +52,7 @@ function ImageGrid() {
 export default function Profile() {
     return (
         <>
-            <section className="w-full pt-10">
+            <section className="w-full py-10">
                 <div className="flex w-full xl:py-8 xl:px-32 flex-col xl:flex-row">
                     <div className="xl:w-1/2 px-4 xl:px-8 w-full">
                         <h2 className="text-4xl">About me</h2>
